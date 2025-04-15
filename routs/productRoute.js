@@ -14,8 +14,14 @@ const {
   createFilterObj,
 } = require("../services/productService");
 const authService = require("../services/authService");
+const reviewRoute = require("./reviewRoute");
 
 const router = express.Router({ mergeParams: true });
+
+// POST   /products/jkshjhsdjh2332n/reviews
+// GET    /products/jkshjhsdjh2332n/reviews
+// GET    /products/jkshjhsdjh2332n/reviews/87487sfww3
+router.use("/:productId/reviews", reviewRoute);
 
 router
   .route("/")

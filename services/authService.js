@@ -16,6 +16,7 @@ exports.signup = asynchandler(async function (req, res, next) {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
+    role: req.body.role,
   });
 
   //generate token
