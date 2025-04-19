@@ -6,13 +6,12 @@ exports.delete = (model) =>
   asynchandler(async (req, res, next) => {
     const { id } = req.params;
 
-    const document = await model.findByIdAndDelete(id);
+    const document = await model.findById(id);
     if (!document) {
-      return next(new ApiError(`no document for this id ${id}`, 404));
+      return next(new ApiError(`No document for this id ${id}`, 404));
     }
 
-    // Trigger "remove" event when update document
-    document.remove();
+    await document.deleteOne(); // Works with Mongoose 7+
 
     res.status(204).send();
   });
